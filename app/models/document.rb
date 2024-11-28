@@ -11,4 +11,7 @@
 #
 class Document < ApplicationRecord
   has_many  :notes, class_name: "Note", foreign_key: "document_id", dependent: :destroy
+  has_rich_text :content
+  
 end
+

@@ -66,6 +66,21 @@
       Edit document
     </h2>
 
+
+<%= form_with(model: Document.new, url: "/insert_document", scope: nil, method: "post") do |form| %>
+  <div>
+    <%= form.label(:content, for: "query_content") %>
+    <%= form.rich_text_area(:content, id: "query_content", name: "query_content") %>
+  </div>
+  <button>Create post</button>
+<% end %>
+
+
+
+
+
+
+<hr>
     <form action="/modify_document/<%= @the_document.id %>"  method="post" >
       <div>
         <label for="original_body_box">

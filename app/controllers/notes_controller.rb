@@ -25,7 +25,7 @@ class NotesController < ApplicationController
     #document_id=params.fetch("query_document_id")
     #document_id=Document.where({:document_title => document_title}).id
    
-   
+   #how do i save this note into a document now?
 
     if the_note.valid?
       the_note.save
