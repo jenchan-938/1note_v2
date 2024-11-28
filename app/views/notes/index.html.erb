@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      List of all notes
+      new note
     </h1>
   </div>
 </div>
@@ -10,32 +10,18 @@
 
 <div>
   <div>
-    <h2>
-      Add a new note
-    </h2>
+  
 
     <form action="/insert_note" method="post">
       <div>
-        <label for="body_box">
-          Body
-        </label>
-
-        <input type="text" id="body_box" name="query_body">
+        <label for="body_box"></label>
+        <textarea id="body_box" name="body_box" rows="25" cols="150" placeholder = "your new note..."></textarea>
       </div>
 
-      <div>
-        <label for="creator_id_box">
-          Creator
-        </label>
 
-        <input type="text" id="creator_id_box" name="query_creator_id">
-      </div>
 
       <div>
-        <label for="document_id_box">
-          Document
-        </label>
-
+        <label for="document_id_box"> Document </label>
         <input type="text" id="document_id_box" name="query_document_id">
       </div>
 
