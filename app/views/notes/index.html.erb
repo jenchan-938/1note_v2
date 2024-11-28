@@ -14,8 +14,8 @@
 
     <form action="/insert_note" method="post">
       <div>
-        <label for="body_box"></label>
-        <textarea id="body_box" name="body_box" rows="25" cols="150" placeholder = "your new note..."></textarea>
+        <label for="query_body"></label>
+        <textarea id="query_body" name="query_body" rows="10" cols="150" placeholder = "your new note..."></textarea>
       </div>
 
 
@@ -25,8 +25,13 @@
         <input type="text" id="document_id_box" name="query_document_id">
       </div>
 
+      <div>
+        <label for="document_title"> Document title </label>
+        <input type="text" id="document_title" name="document_title">
+      </div>
+
       <button>
-        Create note
+        Add note
       </button>
     </form>
   </div>
