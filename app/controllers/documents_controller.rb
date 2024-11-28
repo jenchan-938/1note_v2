@@ -19,7 +19,6 @@ class DocumentsController < ApplicationController
 
   def create
     the_document = Document.new
-    the_document.original_body = params.fetch("query_original_body")
     the_document.user_id = current_user.id
     the_document.title = params.fetch("query_title")
 
@@ -34,9 +33,7 @@ class DocumentsController < ApplicationController
   def update
     the_id = params.fetch("path_id")
     the_document = Document.where({ :id => the_id }).at(0)
-
-    the_document.original_body = params.fetch("query_original_body")
-    the_document.user_id = params.fetch("query_user_id")
+    the_document.user_id = current_user.id
     the_document.title = params.fetch("query_title")
 
     if the_document.valid?

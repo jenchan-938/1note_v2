@@ -15,26 +15,17 @@
     </h2>
 
     <form action="/insert_document" method="post">
-      <div>
-        <label for="original_body_box">
-          Original body
-        </label>
-
-        <input type="text" id="original_body_box" name="query_original_body">
-      </div>
-
-
-
+    
       <div>
         <label for="title_box">
-          Title
+          Name of document
         </label>
 
         <input type="text" id="title_box" name="query_title">
       </div>
 
       <button>
-        Create document
+        Create new document
       </button>
     </form>
   </div>
@@ -70,7 +61,7 @@
         <td>
           <%= a_document.id %>
         </td>
-        
+
         <td>
           <%= a_document.title %>
         </td>
