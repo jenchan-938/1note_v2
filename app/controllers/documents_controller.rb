@@ -20,7 +20,7 @@ class DocumentsController < ApplicationController
   def create
     the_document = Document.new
     the_document.original_body = params.fetch("query_original_body")
-    the_document.user_id = params.fetch("query_user_id")
+    the_document.user_id = current_user.id
     the_document.title = params.fetch("query_title")
 
     if the_document.valid?
