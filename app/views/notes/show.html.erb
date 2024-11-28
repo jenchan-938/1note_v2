@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Note #<%= @the_note.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/notes">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_note/<%= @the_note.id %>">
+          Delete note
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Body
+      </dt>
+      <dd>
+        <%= @the_note.body %>
+      </dd>
+
+      <dt>
+        Creator
+      </dt>
+      <dd>
+        <%= @the_note.creator_id %>
+      </dd>
+
+      <dt>
+        Document
+      </dt>
+      <dd>
+        <%= @the_note.document_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_note.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_note.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit note
+    </h2>
+
+    <form action="/modify_note/<%= @the_note.id %>"  method="post" >
+      <div>
+        <label for="body_box">
+          Body
+        </label>
+
+        <input type="text" id="body_box" name="query_body" value="<%= @the_note.body %>">
+      </div>
+
+      <div>
+        <label for="creator_id_box">
+          Creator
+        </label>
+
+        <input type="text" id="creator_id_box" name="query_creator_id" value="<%= @the_note.creator_id %>">
+      </div>
+
+      <div>
+        <label for="document_id_box">
+          Document
+        </label>
+
+        <input type="text" id="document_id_box" name="query_document_id" value="<%= @the_note.document_id %>">
+      </div>
+
+      <button>
+        Update note
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

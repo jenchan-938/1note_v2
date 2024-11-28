@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Document #<%= @the_document.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/documents">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_document/<%= @the_document.id %>">
+          Delete document
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Original body
+      </dt>
+      <dd>
+        <%= @the_document.original_body %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_document.user_id %>
+      </dd>
+
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_document.title %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_document.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_document.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit document
+    </h2>
+
+    <form action="/modify_document/<%= @the_document.id %>"  method="post" >
+      <div>
+        <label for="original_body_box">
+          Original body
+        </label>
+
+        <input type="text" id="original_body_box" name="query_original_body" value="<%= @the_document.original_body %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_document.user_id %>">
+      </div>
+
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_document.title %>">
+      </div>
+
+      <button>
+        Update document
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
