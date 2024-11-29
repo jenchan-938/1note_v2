@@ -20,7 +20,7 @@
 
 
       <div>
-      <select id="document_title" name="document_title" required>
+      <select id="document_id" name="document_id" required>
       <option value="" disabled selected>Choose your document</option>
       <!-- Dynamically populated options from the database -->
       <% Document.all.each do |document| %>
@@ -29,10 +29,7 @@
     </select>
       </div>
 
-      <div>
-        <label for="document_id_box"> Document </label>
-        <input type="text" id="document_id_box" name="query_document_id">
-      </div>
+  
 
       <button>
         Add note

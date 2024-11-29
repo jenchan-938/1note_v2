@@ -21,7 +21,7 @@ class NotesController < ApplicationController
     the_note = Note.new
     the_note.body = params.fetch("query_body")
     the_note.creator_id = current_user.id
-    document_title=params.fetch("document_title")
+    the_note.document_id=params.fetch("document_id")
     #document_id=params.fetch("query_document_id")
     #document_id=Document.where({:document_title => document_title}).id
    
