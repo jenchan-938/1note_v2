@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   # Routes for the Document resource:
-
+  get("/", {:controller => "notes", :action=>"index"})
   # CREATE
   post("/insert_document", { :controller => "documents", :action => "create" })
           
