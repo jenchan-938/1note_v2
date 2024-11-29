@@ -8,6 +8,8 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <p> <a href ="/documents"> Documents </a> <a href ="/notes"> Notes </a> </p>
+ 
     <% if current_user.present? %>
   <a href="/users/edit">Edit profile</a>
 
