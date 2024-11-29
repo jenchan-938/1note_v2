@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Document #<%= @the_document.id %> details
+    <%= @the_document.title %> notes
     </h1>
 
     <div>
@@ -18,45 +18,7 @@
       </div>
     </div>
 
-    <dl>
-      <dt>
-        Original body
-      </dt>
-      <dd>
-        <%= @the_document.original_body %>
-      </dd>
-
-      <dt>
-        User
-      </dt>
-      <dd>
-        <%= @the_document.user_id %>
-      </dd>
-
-      <dt>
-        Title
-      </dt>
-      <dd>
-        <%= @the_document.title %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_document.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_document.updated_at) %> ago
-      </dd>
-    </dl>
-  </div>
-</div>
-
+    
 <hr>
 
 
