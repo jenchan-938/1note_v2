@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   # Routes for the Note resource:
 
   # CREATE
-  post("/insert_note", { :controller => "notes", :action => "create" })
+  post("/notes", { :controller => "notes", :action => "create" })
           
   # READ
   get("/notes", { :controller => "notes", :action => "index" })
