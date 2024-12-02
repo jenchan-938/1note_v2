@@ -22,8 +22,8 @@
 <hr>
 <div>
     <ul>
-    <% @the_document.notes.body each do |a_note| %>
-      <li><%= a_note %> </li>
+    <% @the_document.notes.each do |a_note| %>
+      <li><%= a_note.body %> </li>
     <%end%>
     </ul>
   
