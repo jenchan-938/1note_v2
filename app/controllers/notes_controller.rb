@@ -23,8 +23,7 @@ class NotesController < ApplicationController
     the_note.creator_id = current_user.id
     the_note.document_id=params.fetch("document_id")
    
-   #how do i save this note into a document now? >> Note.where{document id = documentid of this document}
-
+ 
     if the_note.valid?
       the_note.save
       redirect_to("/notes", { :notice => "Note created successfully." })
