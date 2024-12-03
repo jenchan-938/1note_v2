@@ -32,6 +32,6 @@ message_list = [
       }
     )
 
-   @chatgpt_title=api_response.fetch("choices").at(0).fetch("messages").fetch("content")
+   @chatgpt_title=api_response.fetch("choices").at(0).fetch("message").fetch("content")
   
    pp @chatgpt_title
