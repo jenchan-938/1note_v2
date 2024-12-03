@@ -13,13 +13,15 @@ require "dotenv/load"
 message_list = [
   {
     "role" => "system",
-    "content" => "You are the world's best categorizer. My goal is to categorize all of my notes into specific documents with different titles. I will provide you with a random note. The note is #{}"
+    "content" => "You are the world's best categorizer. My goal is to categorize all of my notes into specific documents with different titles. I will provide you with a random note. The note is: i need to do homework"
   },
   {
-    "role": "user",
-    "content": "Can you please help me assign this note with a title/category? Please either assign it to one of these document titles listed here: #{Documents.all.pluck(:title)} or if the note does not fit any of these document titles please assign a new title that is one to two words"
+    "role" => "user",
+    "content" => "Can you please help me assign this note with a title/category? Please either assign it to one of these document titles listed here: ['Gym', 'Reciepes', 'To-do list', 'Dreams', 'Untitled'] or if the note does not fit any of these document titles please assign a new title that is one to two words"
   }
 ]
+
+##{Document.all.pluck(:title)}
     # Send the message list to the API
     client = OpenAI::Client.new(access_token: ENV.fetch("OPENAI_KEY"))
 
@@ -31,4 +33,5 @@ message_list = [
     )
 
    @chatgpt_title=api_response.fetch("choices").at(0).fetch("messages").fetch("content")
-    
+  
+   pp @chatgpt_title
