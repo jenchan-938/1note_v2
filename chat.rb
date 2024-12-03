@@ -6,6 +6,7 @@ require "dotenv/load"
 #I need to tell chatgpt the current list of doc names and body note >> how to tell it the body if the forum is not submitted yet?
 # set up the prompt structure  >> any feedback?
 # how to do if select then use user selected, if not then use the chat gpt? Do I had an if statement to the notes controller if id = blank? how to make it ok if we dont selete forum? Can i add on select to be on untitled?
+#how to integrate text file into the first page?
 
 # Set up the message list with a system message
 
