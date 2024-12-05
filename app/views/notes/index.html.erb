@@ -10,33 +10,25 @@
 
 <div>
   <div>
-  
-
-    <form action="/notes" method="post">
-      <div>
-        <label for="query_body"></label>
-        <textarea id="query_body" name="query_body" rows="10" cols="150" placeholder = "your new note..."></textarea>
-      </div>
-
-
-      <div>
-      <select id="document_id" name="document_id">
+  <%= form_with(model: Note.new, url: "/notes", scope: nil, method: "post") do |form| %>
+  <div>
+    <%= form.label(:body, for: "query_body") %>
+    <%= form.rich_text_area(:body, id: "query_body", name: "query_body") %>
+  </div>
+  <select id="document_id" name="document_id">
       <option value="" disabled selected>Choose your document</option>
       <!-- Dynamically populated options from the database -->
       <% Document.all.each do |document| %>
         <option value="<%= document.id %>"><%= document.title %></option>
       <% end %>
     </select>
-      </div>
+  <button>Create post</button>
+<% end %>
 
-  
-
-      <button>
-        Add note
-      </button>
-    </form>
   </div>
 </div>
+
+
 
 <hr>
 
