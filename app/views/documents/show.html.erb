@@ -37,20 +37,6 @@
     </h2>
 
 
-<%= form_with(model: Document.new, url: "/insert_document", scope: nil, method: "post") do |form| %>
-  <div>
-    <%= form.label(:content, for: "query_content") %>
-    <%= form.rich_text_area(:content, id: "query_content", name: "query_content") %>
-  </div>
-  <button>Create post</button>
-<% end %>
-
-<%#https://gist.github.com/jelaniwoods/be8f89c3bd985d96dca46ed26575c13f ; need to finish adding in the params%> 
-
-
-
-
-
 <hr>
     <form action="/modify_document/<%= @the_document.id %>"  method="post" >
       <div>
@@ -83,5 +69,6 @@
     </form>
   </div>
 </div>
+
 
 <hr>
