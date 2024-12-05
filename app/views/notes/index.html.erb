@@ -20,7 +20,7 @@
 
 
       <div>
-      <select id="document_id" name="document_id" required>
+      <select id="document_id" name="document_id">
       <option value="" disabled selected>Choose your document</option>
       <!-- Dynamically populated options from the database -->
       <% Document.all.each do |document| %>

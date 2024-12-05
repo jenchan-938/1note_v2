@@ -22,8 +22,7 @@ class NotesController < ApplicationController
     the_note.body = params.fetch("query_body")
     the_note.creator_id = current_user.id
 
-    if params.fetch("document_id").blank?
-      #[put in the chatgpt code]; want chat gpt to return document title that will match the document 
+    if params.fetch("document_id", nil).blank?
 
       message_list = [
         {
@@ -32,7 +31,7 @@ class NotesController < ApplicationController
         },
         {
           "role" => "user",
-          "content" => "Can you please help me assign this note with a title/category? Please either assign it to one of these document titles listed here: #{Document.all.pluck(:title)} or if the note does not fit any of these document titles please assign a new title that is one word",
+          "content" => "Can you please help me assign this note with a title/category? Please either assign it to one of these document titles listed here: #{Document.all.pluck(:title)} or if the note does not fit any of these document titles please respond with only one word that would be a good new title. Please only respond with one word",
         },
       ]
 
@@ -47,10 +46,20 @@ class NotesController < ApplicationController
       )
 
       @chatgpt_title = api_response.fetch("choices").at(0).fetch("message").fetch("content")
-      #Document_id=Document.where({ :title => @chatgpt_title}).at(0).id >>> chat chatgpta
-      # if document ID is nil then create the document first ; Document.new ; Document .title = return from chat gpt and then document save 
-      #Now that we have document_id ; assign the note the document _id 
-      #the_note.document_id = xx ()
+      pp @chatgpt_title
+  
+    
+      
+      if Document.where({ :title => @chatgpt_title}).at(0)  == nil
+        d=Document.new
+        d.title= @chatgpt_title
+        d.save
+        the_note.document_id=Document.where({ :title => @chatgpt_title}).at(0).id 
+      else
+        the_note.document_id=Document.where({ :title => @chatgpt_title}).at(0).id 
+      end
+     
+      #how would the document create a new id?
       
 
     else
