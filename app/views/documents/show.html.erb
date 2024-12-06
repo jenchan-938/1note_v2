@@ -23,7 +23,7 @@
 <div>
    
     <% @the_document.notes.each do |a_note| %>
-      <p><%=raw a_note.body %>  <a href="/delete_note/<%= a_note.id %>"> Delete note </a> </p>
+      <p><%=raw a_note.body %> <a href="/delete_note/<%= a_note.id %>"> Delete</a> </p>
     <%end%>
    
   
