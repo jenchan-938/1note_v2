@@ -30,6 +30,12 @@
 </div>
 <hr>
 
+  <form action="/documents/<%= @the_document.id %>" method="post" >
+    <input type = "checkbox" id = "reclasify" name= "reclassify" >
+    <label for ="reclassify" > Chat-GPT reclassification </label> 
+
+
+<hr>
 <div>
   <div>
     <h2>
@@ -37,7 +43,9 @@
     </h2>
 
 
+
 <hr>
+
     <form action="/modify_document/<%= @the_document.id %>"  method="post" >
       <div>
         <label for="original_body_box">
