@@ -64,8 +64,9 @@ class DocumentsController < ApplicationController
           #need to create a new column and then need to set it to .save onto the doc.save
           #lesson on active lesson > creating migration - adding or removing columns 
           #contact_book
-          #when you redirect you had a query string - that value you get from - query string the next route is redirecting to params harsh and fetch it ;
-          
+          #when you redirect you had a query string - that value you get from - query string the next route is redirecting to params harsh and fetch it; 
+          #need only to update this controller 
+
       else
         @chat_gpt_reclassify = "na"
 
