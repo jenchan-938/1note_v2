@@ -30,9 +30,10 @@
 </div>
 <hr>
 
-  <form action="/documents/<%= @the_document.id %>" method="post" >
+  <form action="/modify_document/<%= @the_document.id %>" method="post" >
     <input type = "checkbox" id = "reclasify" name= "reclassify" >
     <label for ="reclassify" > Chat-GPT reclassification </label> 
+    <button> Reclassify! </button>
 
 
 <hr>
@@ -78,5 +79,10 @@
   </div>
 </div>
 
+
+<hr>
+
+<hr>
+<%= pp @chat_gpt_reclassify %>
 
 <hr>
