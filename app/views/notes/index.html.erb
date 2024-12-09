@@ -1,7 +1,7 @@
 <div class="container my-4">
   <!-- Page Header -->
   <div class="text-center">
-    <h1 class="display-4">New Note</h1>
+    <h1 class="display-6">your second brain</h1>
   </div>
 </div>
 
@@ -12,7 +12,7 @@
   <div class="mb-4">
     <%= form_with(model: Note.new, url: "/notes", scope: nil, method: "post", class: "needs-validation", novalidate: true) do |form| %>
       <div class="form-group">
-        <%= form.label(:body, "Note Content", for: "query_body", class: "form-label") %>
+        <%= form.label(:body, "New Note", for: "query_body", class: "form-label") %>
         <%= form.rich_text_area(:body, id: "query_body", name: "query_body", class: "form-control") %>
       </div>
 
