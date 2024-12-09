@@ -33,7 +33,7 @@ class DocumentsController < ApplicationController
   def update
     reclassification = params.fetch("reclassify")
     doc_id= params.fetch("path_id")
-    doc =Document.where({:id => doc_id}).at(0)
+    @doc =Document.where({:id => doc_id}).at(0)
 
     if reclassification == "on"
 
@@ -61,22 +61,22 @@ class DocumentsController < ApplicationController
 
       chat_gpt_reclassification= chatgpt_response.fetch("choices").at(0).fetch("message").fetch("content")
       @chat_gpt_reclassify = chat_gpt_reclassification.html_safe
-          #need to create a new column and then need to set it to .save onto the doc.save
-          #lesson on active lesson > creating migration - adding or removing columns 
-          #contact_book
-          #when you redirect you had a query string - that value you get from - query string the next route is redirecting to params harsh and fetch it; 
-          #need only to update this controller 
+      @doc.reclassify = @chat_gpt_reclassify
+      @doc.save
+         
 
       else
         @chat_gpt_reclassify = "na"
+        @doc.reclassify = @chat_gpt_reclassify
+        @doc.save
 
       end
     
 
-      if doc.valid?
-        doc.save
+      if @doc.valid?
+        @doc.save
         redirect_to("/documents/#{doc.id}", { :notice => "Document updated successfully."} )
-        pp @chat_gpt_reclassify
+       
       else
         redirect_to("/documents/#{doc.id}", { :alert => doc.errors.full_messages.to_sentence })
       end
