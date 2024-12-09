@@ -36,16 +36,19 @@ class DocumentsController < ApplicationController
     @doc =Document.where({:id => doc_id}).at(0)
 
     if reclassification == "on"
-
+      notes = @doc.notes.map do |a_note|  #map vs. each
+        "<p> #{a_note.body} </p>"
+        end.join
+    pp notes
       all_notes = [
         {
           "role" => "system",
-          "content" => "You are the world's best formatter. My goal is to reformat my notes to optimize clarity and insights. Can you please read through all of these notes I will provide and think about how to best show all of these notes on the page based on the content. [For example, if the note is about tracking to-do's make each note the same bullets. If the note is about fitness make sure to categorize it by muscle group/body part to help someone track their progress.] Please give me an output in HTML."
+          "content" => "You are the world's best formatter. My goal is to reformat my notes to optimize clarity and insights. Can you please read through all of these notes I will provide and think about how to best show all of these notes on the page based on the content. [For example, if the note is about tracking to-do's make each note the same bullets. If the note is about fitness make sure to categorize it by muscle group/body part to help someone track their progress.] Please give me an output in HTML. Dont wrap it in markdown"
         },
     
         {
       "role" => "user",
-      "content" => "the notes are #{doc.notes.all}"
+      "content" => "the notes are #{notes}"
       }
       ]
 
@@ -75,10 +78,10 @@ class DocumentsController < ApplicationController
 
       if @doc.valid?
         @doc.save
-        redirect_to("/documents/#{doc.id}", { :notice => "Document updated successfully."} )
+        redirect_to("/documents/#{@doc.id}", { :notice => "Document updated successfully."} )
        
       else
-        redirect_to("/documents/#{doc.id}", { :alert => doc.errors.full_messages.to_sentence })
+        redirect_to("/documents/#{@doc.id}", { :alert => @doc.errors.full_messages.to_sentence })
       end
     end
 
