@@ -83,5 +83,10 @@
 <hr>
 
 <hr>
-<%=@the_document.reclassify.html_safe%>
+<% if @the_document.reclassify.nil? %>
+  <%= @the_document_reclassify %>
+<% else %>
+  <%= @the_document.reclassify.html_safe %>
+<% end %>
+
 <hr>
