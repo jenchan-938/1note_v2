@@ -4,6 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  original_body :string
+#  reclassify    :string
 #  title         :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
