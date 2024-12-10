@@ -31,56 +31,26 @@
 <hr>
 
   <form action="/modify_document/<%= @the_document.id %>" method="post" >
-    <input type = "checkbox" id = "reclasify" name= "reclassify" >
-    <label for ="reclassify" > Chat-GPT reclassification </label> 
-    <button> Reclassify! </button>
+    
+    <div>
+      <input type = "checkbox" id = "reclasify" name= "reclassify" >
+      <label for ="reclassify" > Chat-GPT reclassification </label> 
+    </div>
+
+      <div>
+        <label for="structure"> Please write how you want your notes to be reorganized in detail </label>
+        <input type="text" id="structure" name="structure">
+      </div>
+
+    <div> <button> Reclassify! </button> </div>
 
 
 <hr>
 <div>
   <div>
     <h2>
-      Edit document
+      Chat-GPT reorganized notes
     </h2>
-
-
-
-<hr>
-
-    <form action="/modify_document/<%= @the_document.id %>"  method="post" >
-      <div>
-        <label for="original_body_box">
-          Original body
-        </label>
-
-        <input type="text" id="original_body_box" name="query_original_body" value="<%= @the_document.original_body %>">
-      </div>
-
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_document.user_id %>">
-      </div>
-
-      <div>
-        <label for="title_box">
-          Title
-        </label>
-
-        <input type="text" id="title_box" name="query_title" value="<%= @the_document.title %>">
-      </div>
-
-      <button>
-        Update document
-      </button>
-    </form>
-  </div>
-</div>
-
-
-<hr>
 
 <hr>
 <% if @the_document.reclassify.nil? %>
