@@ -1,62 +1,62 @@
-<div>
-  <div>
-    <h1>
-    <%= @the_document.title %> notes
-    </h1>
+<div class="container my-4">
+  <!-- Document Title -->
+  <div class="text-center mb-4">
+    <h1 class="display-4"><%= @the_document.title %> Notes</h1>
+  </div>
 
-    <div>
-      <div>
-        <a href="/documents">
-          Go back
-        </a>
-      </div>
-
-      <div>
-        <a href="/delete_document/<%= @the_document.id %>">
-          Delete document
-        </a>
-      </div>
-    </div>
-
-    
-<hr>
-<div>
-   
-    <% @the_document.notes.each do |a_note| %>
-      <p><%=raw a_note.body %> <a href="/delete_note/<%= a_note.id %>"> Delete</a> </p>
-    <%end%>
-   
-  
+  <!-- Delete Document -->
+  <div class="mb-4 text-end">
+    <a href="/delete_document/<%= @the_document.id %>" class="btn btn-danger">Delete Document</a>
+  </div>
 </div>
-<hr>
 
-  <form action="/modify_document/<%= @the_document.id %>" method="post" >
-    
-    <div>
-      <input type = "checkbox" id = "reclasify" name= "reclassify" >
-      <label for ="reclassify" > Chat-GPT reclassification </label> 
+<hr class="my-4">
+
+<div class="container">
+  <!-- Notes Section -->
+  <div class="mb-4">
+    <h2 class="h5">Existing Notes</h2>
+    <% @the_document.notes.each do |a_note| %>
+      <div class="d-flex justify-content-between align-items-center p-2 mb-2 border rounded bg-light">
+        <p class="mb-0"><%= raw a_note.body %></p>
+        <a href="/delete_note/<%= a_note.id %>" class="btn btn-sm btn-outline-danger">Delete</a>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<hr class="my-4">
+
+<div class="container">
+  <!-- Modify Document Form -->
+  <h2 class="h5 mb-3">Modify Document</h2>
+  <form action="/modify_document/<%= @the_document.id %>" method="post" class="needs-validation" novalidate>
+    <div class="form-check mb-3">
+      <input type="checkbox" id="reclassify" name="reclassify" class="form-check-input">
+      <label for="reclassify" class="form-check-label">Chat-GPT Reclassification</label>
     </div>
 
-      <div>
-        <label for="structure"> Please write how you want your notes to be reorganized in detail </label>
-        <input type="text" id="structure" name="structure">
-      </div>
+    <div class="form-group mb-3">
+      <label for="structure" class="form-label">Please write how you want your notes to be reorganized in detail</label>
+      <input type="text" id="structure" name="structure" class="form-control" placeholder="Describe your desired structure">
+    </div>
 
-    <div> <button> Reclassify! </button> </div>
+    <button type="submit" class="btn btn-primary">Clean Up Notes!</button>
+  </form>
+</div>
 
+<hr class="my-4">
 
-<hr>
-<div>
-  <div>
-    <h2>
-      Chat-GPT reorganized notes
-    </h2>
+<div class="container">
+  <!-- Reorganized Notes Section -->
+  <h2 class="h5 mb-3">Chat-GPT Reorganized Notes</h2>
+  <div class="border rounded p-3 bg-light">
+    <% if @the_document.reclassify.nil? %>
+      <p class="text-muted"><%= @the_document_reclassify %></p>
+    <% else %>
+      <div><%= @the_document.reclassify.html_safe %></div>
+    <% end %>
+  </div>
+</div>
 
-<hr>
-<% if @the_document.reclassify.nil? %>
-  <%= @the_document_reclassify %>
-<% else %>
-  <%= @the_document.reclassify.html_safe %>
-<% end %>
-
-<hr>
+<hr class="my-4">

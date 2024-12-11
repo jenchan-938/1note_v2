@@ -40,7 +40,7 @@ class DocumentsController < ApplicationController
       notes = @doc.notes.map do |a_note|  #map vs. each
         "<p> #{a_note.body} </p>"
         end.join
-    
+      
       all_notes = [
         {
           "role" => "system",
