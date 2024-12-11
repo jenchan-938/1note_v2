@@ -44,7 +44,7 @@ class DocumentsController < ApplicationController
       all_notes = [
         {
           "role" => "system",
-          "content" => "Given the input #{structure}, reorganize the notes in a logical way. Return HTML formatted re-structured notes. Do not include markdown syntax. Only include HTML. It must be raw HTML."
+          "content" => "Given the input #{structure}, reorganize the notes in a logical way. Return HTML formatted re-structured notes. Do not include markdown syntax. Only include HTML. It must be raw HTML." #double check that it is HTML
         },
     
         {
