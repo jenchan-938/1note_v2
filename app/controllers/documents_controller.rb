@@ -44,7 +44,7 @@ class DocumentsController < ApplicationController
       all_notes = [
         {
           "role" => "system",
-          "content" => "You are the world's best formatter. My goal is to reformat my notes to optimize clarity and insights. Can you please read through all of these notes I will provide and think about how to best show all of these notes on the page based on the content. If you are given an input: #{structure} please use that structure. If you are not given a structure please organize all of the data by the most logical way for that content. Please give me an output in HTML. Dont wrap it in markdown"
+          "content" => "Given the input #{structure}, reorganize the notes in a logical way. Return HTML formatted re-structured notes. Do not include markdown syntax. Only include HTML. It must be raw HTML."
         },
     
         {
