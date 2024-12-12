@@ -38,18 +38,18 @@ class DocumentsController < ApplicationController
 
     if reclassification == "on"
       notes = @doc.notes.map do |a_note|  #map vs. each
-        "<p> #{a_note.body} </p>"
+        Nokogiri::HTML(a_note.body).text #class in the gem used to parse HTML - instead of doing json.parse to convert json string - takes HTML string and hash like objects 
         end.join
       
       all_notes = [
         {
           "role" => "system",
-          "content" => "Given the input #{structure}, reorganize the notes in a logical way. Return HTML formatted re-structured notes. Do not include markdown syntax. Only include HTML. It must be raw HTML." #double check that it is HTML
+          "content" => "You are an expert in productivity and organizing notes for a human. These are the notes: #{notes}. You will receive instructions on how to organize these notes. When you do organize them, return it in HTML. Do not include markdown syntax but only include HTML. It must be raw HTML please make sure to double check this." 
         },
     
         {
       "role" => "user",
-      "content" => "the notes are #{notes}"
+      "content" => "The user instructions for organizing the notes are as follows: #{structure} . If there is no input, reorganize notes based on the most logical way."
       }
       ]
 
